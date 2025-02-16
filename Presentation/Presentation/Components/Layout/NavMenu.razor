@@ -1,0 +1,120 @@
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Identity
+@using Presentation.Services
+@using Microsoft.AspNetCore.Http
+@using System.ComponentModel.DataAnnotations
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager Navigation
+@inject IHttpContextAccessor HttpContextAccessor
+@inject Blazored.SessionStorage.ISessionStorageService SessionStorage
+@* @inject Blazored.SessionStorage.ISessionStorageService SessionStorage *@
+@* @inject SignInManager<IdentityUser> SignInManager *@
+
+<div id="sidebar">
+    <DxMenu Orientation="@Orientation.Vertical" CssClass="menu">
+        <Items>
+            <DxMenuItem NavigateUrl="/" Text="Home" CssClass="menu-item" IconCssClass="icon home-icon"></DxMenuItem>
+            <DxMenuItem NavigateUrl="/dashboard" Text="Siparişler" CssClass="menu-item" IconCssClass="icon counter-icon"></DxMenuItem>
+            <DxMenuItem NavigateUrl="/products" Text="Ürünler" CssClass="menu-item" IconCssClass="icon weather-icon"></DxMenuItem>
+            <DxMenuItem NavigateUrl="/parola-degistir" Text="Parola Değiştir" CssClass="menu-item" IconCssClass="icon weather-icon"></DxMenuItem>
+            <DxMenuItem NavigateUrl="/siparisolustur" Text="Sipariş Ver" CssClass="menu-item" IconCssClass="icon weather-icon"></DxMenuItem>
+            <DxMenuItem NavigateUrl="/siparisdetay" Text="Sipariş Detay /{siparisId:int}" CssClass="menu-item" IconCssClass="icon weather-icon"></DxMenuItem>
+            <DxMenuItem NavigateUrl="/login" Text="Çıkış Yap" CssClass="menu-item" IconCssClass="icon weather-icon" Click=@Logout />
+
+        </Items>
+    </DxMenu>
+
+    @* <h3>Hoş geldin, @kullaniciAdi!</h3> *@
+    <!-- Giriş Durumu -->
+    @* <div class="auth-status">
+        <AuthorizeView>
+            <Authorized>
+                <p>Welcome, ***</p>
+            </Authorized>
+            <NotAuthorized>
+                <p>Please log in to access this page.</p>
+            </NotAuthorized>
+        </AuthorizeView>
+
+    </div> *@
+</div>
+
+@* @code {
+    private string kullaniciAdi;
+    private bool isFirstRender = true;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            kullaniciAdi = await SessionStorage.GetItemAsync<string>("KullaniciAdi");
+            //StateHasChanged(); // Değişiklikleri UI'a yansıt
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+} *@
+
+<style>
+    .auth-status {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #888;
+        text-align: center;
+    }
+
+    .logout-btn, .login-btn {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 8px 12px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+        .logout-btn:hover, .login-btn:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+@code {
+    private bool isLoggedIn = false;
+
+    async Task Logout()
+    {
+        await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        await SessionStorage.RemoveItemAsync("KullaniciAdi");
+        isLoggedIn = false;
+        StateHasChanged();
+        Navigation.NavigateTo("/login", forceLoad: true);
+    }
+
+}
+
+@* @code {
+    private string UserName { get; set; } = "Kullanıcı";
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (user.Identity.IsAuthenticated)
+        {
+            UserName = user.Identity.Name;
+        }
+    }
+
+    private async Task Logout()
+    {
+        await SignInManager.SignOutAsync();
+        var customAuthProvider = AuthenticationStateProvider as CustomAuthenticationStateProvider;
+        if (customAuthProvider != null)
+        {
+            await customAuthProvider.NotifyUserLogout();
+        }
+        Navigation.NavigateTo("/", forceLoad: true);
+    }
+} *@

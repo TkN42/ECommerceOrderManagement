@@ -1,0 +1,138 @@
+﻿@page "/register"
+@using System.ComponentModel.DataAnnotations
+@using BusinessLogic.Services
+@rendermode InteractiveAuto
+@inject NavigationManager Navigation
+@inject BusinessLogic.Services.AuthService AuthService
+
+<h3 style="text-align: center;">Kayıt Ol</h3>
+
+<div class="register-form-container">
+    <EditForm Model="@registerModel" OnValidSubmit="HandleRegister" OnInvalidSubmit="HandleInvalidSubmit" FormName="registerForm">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <DxTextBox @bind-Text="@registerModel.KullaniciAdi" NullText="Kullanıcı Adı" CssClass="form-input" />
+        <DxTextBox @bind-Text="@registerModel.Parola" NullText="Parola" Password="true" CssClass="form-input" />
+        <DxTextBox @bind-Text="@registerModel.ParolaTekrar" NullText="Parola Tekrar" Password="true" CssClass="form-input" />
+
+        <DxButton SubmitFormOnClick="true"
+                  Text="Kayıt Ol"
+                  CssClass="form-button"
+                  RenderStyle="ButtonRenderStyle.Secondary"
+                  FormName="registerForm" />
+
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+            <p style="color: red; font-weight: bold; text-align: center;">@errorMessage</p>
+        }
+
+        @if (isSuccess)
+        {
+            <p style="color: green; font-weight: bold; text-align: center;">Kayıt başarıyla oluşturuldu.</p>
+        }
+    </EditForm>
+</div>
+
+@code {
+    private RegisterModel registerModel = new RegisterModel();
+    private string errorMessage;
+    private bool isSuccess;
+
+    private async Task HandleRegister()
+    {
+        // Parolaların eşleşip eşleşmediğini kontrol et
+        if (registerModel.Parola != registerModel.ParolaTekrar)
+        {
+            errorMessage = "Parolalar uyuşmuyor.";
+            return;
+        }
+
+        // Parola güvenlik kontrolü
+        if (!AuthService.ValidatePasswordAsync(registerModel.Parola))
+        {
+            errorMessage = "Parola en az 6 karakter olmalı ve güvenli bir formatta olmalıdır.";
+            return;
+        }
+
+        // Kayıt işlemi, kullanıcı adı, parola ve e-posta kontrolü yapılır
+        // gerçek projelerde mail den veya başka şekilde tekil kullanıcı olmasına dikkat edilir
+        bool isRegistered = await AuthService.RegisterAsync(registerModel.KullaniciAdi, registerModel.Parola);
+
+        if (isRegistered)
+        {
+            isSuccess = true;
+            Navigation.NavigateTo("/login"); // Kayıt başarılı olursa giriş sayfasına yönlendir
+        }
+        else
+        {
+            errorMessage = "Kullanıcı adı veya e-posta zaten alınmış.";
+        }
+    }
+
+    private void HandleInvalidSubmit()
+    {
+        errorMessage = "Formda geçersiz veriler var.";
+    }
+
+    public class RegisterModel
+    {
+        [Required(ErrorMessage = "Kullanıcı adı gereklidir.")]
+        public string KullaniciAdi { get; set; }
+
+        [Required(ErrorMessage = "Parola gereklidir.")]
+        public string Parola { get; set; }
+
+        [Required(ErrorMessage = "Parola tekrar gereklidir.")]
+        public string ParolaTekrar { get; set; }
+    }
+}
+
+<style>
+    .register-form-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-input {
+        width: 100%;
+        margin-bottom: 15px;
+        padding: 8px;
+        font-size: 14px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    .form-button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+        .form-button:hover {
+            background-color: #0056b3;
+        }
+
+    h3 {
+        margin-bottom: 20px;
+    }
+
+    .register-form-container p {
+        text-align: center;
+    }
+
+    .dxbl-drawer-panel, .button-link {
+        display: none !important;
+    }
+</style>

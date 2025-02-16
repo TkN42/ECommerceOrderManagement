@@ -1,0 +1,67 @@
+﻿@page "/dashboard"
+@inject Blazored.SessionStorage.ISessionStorageService SessionStorage
+@using DataAccess
+@inject NavigationManager Navigation
+@inject ISiparisRepository SiparisRepo
+@rendermode InteractiveServer
+
+<h3>Hoş geldin, @kullaniciAdi!</h3>
+<h3>Yönetim Paneline Giriş Yaptınız</h3>
+
+@if (siparisler == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <DxGrid Data="@siparisler"
+            CssClass="mw-1100">
+        <Columns>
+            <DxGridDataColumn Caption="Siparis No" FieldName="SiparisId" />
+            <DxGridDataColumn Caption="Siparis Tarihi" FieldName="SiparisTarihi" />
+            <DxGridDataColumn Caption="Kullanici Id" FieldName="KullaniciId" />
+        </Columns>
+    </DxGrid>
+}
+
+@code {
+    private string kullaniciAdi;
+    private bool isFirstRender = true;
+    private List<Siparis> siparisler = new List<Siparis>();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            kullaniciAdi = await SessionStorage.GetItemAsync<string>("KullaniciAdi");
+            if (kullaniciAdi == null) Navigation.NavigateTo("/login");
+            StateHasChanged(); // Değişiklikleri UI'a yansıt
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        siparisler = await LoadSiparisler();
+        StateHasChanged();
+    }
+
+    private async Task<List<Siparis>> LoadSiparisler()
+    {
+        var siparislerFromDb = await SiparisRepo.GetAllAsync();
+        var siparisPresentation = siparislerFromDb.Select(u => new Siparis
+            {
+                SiparisId = u.Id,
+                SiparisTarihi = u.SiparisTarihi,
+                KullaniciId = u.KullaniciId
+            }).ToList();
+
+        return siparisPresentation;
+    }
+
+    public class Siparis
+    {
+        public int SiparisId { get; set; }
+        public DateTime SiparisTarihi { get; set; }
+        public int KullaniciId { get; set; }
+    }
+}

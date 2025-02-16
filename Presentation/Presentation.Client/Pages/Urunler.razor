@@ -1,0 +1,189 @@
+﻿@page "/products"
+@using Domain
+@using System.Net.Http.Json
+@using DevExpress.Blazor
+@using System.Net.Http
+@inject IHttpClientFactory HttpClientFactory
+
+<h3>Ürün Yönetimi</h3>
+
+<DxButton Text="Ürün Ekle" CssClass="form-button" Click="OpenAddModal" />
+
+<DxPopup HeaderText="Ürün Ekle" @bind-Visible="@isAdding" Width="500px" ShowFooter="false">
+    <EditForm Model="@newProduct" OnValidSubmit="AddProduct">
+        <DataAnnotationsValidator />
+        <DxTextBox @bind-Text="@newProduct.UrunAdi" NullText="Ürün Adı" CssClass="form-input" />
+        <DxTextBox @bind-Text="@newProduct.UrunKodu" NullText="Ürün Kodu" CssClass="form-input" />
+        <DxTextBox @bind-Text="@fiyatString" NullText="Fiyat" CssClass="form-input" />
+
+        <DxButton SubmitFormOnClick="true" Text="Ekle" CssClass="form-button" />
+        <DxButton Text="İptal" CssClass="cancel-button" Click="CloseAddModal" />
+    </EditForm>
+</DxPopup>
+
+<table class="product-table">
+    <thead>
+        <tr>
+            <th>Ürün Adı</th>
+            <th>Fiyat</th>
+            <th>Stok</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in products)
+        {
+            <tr>
+                <td>@product.UrunAdi</td>
+                <td>@product.Fiyat</td>
+                <td>@product.UrunKodu</td>
+                <td>
+                    <DxButton Text="Güncelle" CssClass="update-button" Click="() => EditProduct(product)" />
+                    <DxButton Text="Sil" CssClass="delete-button" Click="() => DeleteProduct(product.Id)" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<DxPopup HeaderText="Ürünü Güncelle" @bind-Visible="@isEditing" Width="500px" ShowFooter="false">
+    <EditForm Model="@editingProduct" OnValidSubmit="UpdateProduct">
+        <DataAnnotationsValidator />
+        <DxTextBox @bind-Text="@editingProduct.UrunAdi" NullText="Ürün Adı" CssClass="form-input" />
+        <DxTextBox @bind-Text="@editingProduct.UrunKodu" NullText="Ürün Kodu" CssClass="form-input" />
+        <DxTextBox @bind-Text="@fiyatString" NullText="Fiyat" CssClass="form-input" />
+
+        <DxButton SubmitFormOnClick="true" Text="Güncelle" CssClass="form-button" />
+        <DxButton Text="İptal" CssClass="cancel-button" Click="CancelEdit" />
+    </EditForm>
+</DxPopup>
+
+@code {
+    private HttpClient httpClient;
+    private List<Urun> products = new();
+    private Urun newProduct = new();
+    private Urun editingProduct;
+    private bool isEditing = false;
+    private bool isAdding = false;
+
+    private string fiyatString
+    {
+        get => newProduct.Fiyat.ToString();
+        set => newProduct.Fiyat = decimal.TryParse(value, out var result) ? result : 0;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        httpClient = HttpClientFactory.CreateClient("ApiClient");
+        await LoadProducts();
+    }
+
+    private async Task LoadProducts()
+    {
+        products = await httpClient.GetFromJsonAsync<List<Urun>>("api/urun");
+    }
+
+    private void OpenAddModal() => isAdding = true;
+    private void CloseAddModal() => isAdding = false;
+
+    private async Task AddProduct()
+    {
+        var response = await httpClient.PostAsJsonAsync("api/urun", newProduct);
+        if (response.IsSuccessStatusCode)
+        {
+            await LoadProducts();
+            newProduct = new Urun();
+            isAdding = false;
+        }
+    }
+
+    private void EditProduct(Urun product)
+    {
+        editingProduct = new Urun { Id = product.Id, UrunAdi = product.UrunAdi, Fiyat = product.Fiyat, UrunKodu = product.UrunKodu };
+        fiyatString = editingProduct.Fiyat.ToString();
+        isEditing = true;
+    }
+
+    private async Task UpdateProduct()
+    {
+        editingProduct.Fiyat = Convert.ToDecimal(fiyatString);
+        var response = await httpClient.PutAsJsonAsync("api/urun", editingProduct);
+        if (response.IsSuccessStatusCode)
+        {
+            await LoadProducts();
+            isEditing = false;
+        }
+    }
+
+    private async Task DeleteProduct(int id)
+    {
+        var response = await httpClient.DeleteAsync($"api/urun/{id}");
+        if (response.IsSuccessStatusCode)
+        {
+            await LoadProducts();
+        }
+    }
+
+    private void CancelEdit() => isEditing = false;
+}
+
+<style>
+    .form-input {
+        width: 100%;
+        margin-bottom: 15px;
+        padding: 8px;
+        font-size: 14px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    .form-button, .update-button, .delete-button, .cancel-button {
+        padding: 8px 15px;
+        font-size: 14px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .form-button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+    }
+
+    .update-button {
+        background-color: #ffc107;
+        color: black;
+        border: none;
+    }
+
+    .delete-button {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+    }
+
+    .cancel-button {
+        background-color: #6c757d;
+        color: white;
+        border: none;
+    }
+
+    .product-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+        .product-table th, .product-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .product-table th {
+            background-color: #007bff;
+            color: white;
+        }
+</style>

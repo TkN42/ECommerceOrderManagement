@@ -1,0 +1,48 @@
+﻿@page "/siparisdetay/{siparisId:int}"
+@using DataAccess
+@inject NavigationManager Navigation
+@inject ISiparisRepository SiparisRepo
+
+<h3>Sipariş Detayları</h3>
+<DxGrid Data="@siparisDetaylari" ColumnResizeMode="GridColumnResizeMode.NextColumn" TextWrapEnabled="false">
+    <Columns>
+        <DxGridDataColumn FieldName="UrunAdi" Caption="Ürün Adı" />
+        <DxGridDataColumn FieldName="Miktar" Caption="Miktar" />
+        <DxGridDataColumn FieldName="Fiyat" Caption="Birim Fiyat" />
+    </Columns>
+</DxGrid>
+
+@code {
+    [Parameter] public int SiparisId { get; set; }
+    private List<SiparisDetayModel> siparisDetaylari = new List<SiparisDetayModel>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Sipariş detaylarını veritabanından alıyoruz
+        siparisDetaylari = await LoadSiparisDetaylari(SiparisId);
+    }
+
+    private async Task<List<SiparisDetayModel>> LoadSiparisDetaylari(int siparisId)
+    {
+        // Veritabanından sipariş detaylarını alıyoruz
+        var siparisDetaylariFromDb = await SiparisRepo.GetSiparisDetailsAsync(siparisId);
+
+        // Veriyi dönüşüm işlemiyle uygun modele çeviriyoruz
+        var siparisPresentation = siparisDetaylariFromDb.Select(u => new SiparisDetayModel
+            {
+                Miktar = u.Miktar,
+                UrunAdi = u.UrunAdi,
+                Fiyat = u.Fiyat
+            }).ToList();
+
+        return siparisPresentation;
+    }
+
+    public class SiparisDetayModel
+    {
+        public string UrunAdi { get; set; }
+        public int Miktar { get; set; }
+        public decimal Fiyat { get; set; }
+    }
+
+}

@@ -1,0 +1,65 @@
+﻿@page "/siparisolustur"
+@using System.ComponentModel.DataAnnotations
+@using BusinessLogic.Services
+@rendermode InteractiveAuto
+@inject NavigationManager Navigation
+@inject BusinessLogic.Services.AuthService AuthService
+@using DataAccess
+@inject NavigationManager Navigation
+@inject ISiparisRepository SiparisRepo
+@inject IUrunRepository UrunRepo
+@inject BusinessLogic.Services.UrunlerService UrunService
+
+<h3>Yeni Sipariş Oluştur</h3>
+
+<label for="cbOverview" class="demo-text cw-480 mb-1">Ürün Seç</label>
+<DxComboBox Data="@urunler" @bind-Value="@selectedUrunId" TextFieldName="UrunAdi" InputId="cbOverview" CssClass="cw-480" ValueFieldName="Id" />
+
+<DxSpinEdit @bind-value="@miktar" MinValue="1" />
+
+<DxButton Click="HandleSiparisOlustur" Text="Siparişi Tamamla" />
+
+@code {
+    private List<Urun> urunler = new List<Urun>();
+    private int selectedUrunId;
+    private int miktar = 1;
+    private int kullaniciId = 1; // Test için sabit kullanıcı ID //sessiondan alınabilir
+
+    protected override async Task OnInitializedAsync()
+    {
+        urunler = await LoadUrunler();
+    }
+
+    private async Task<List<Urun>> LoadUrunler()
+    {
+        //currentUserId = await SessionStorage.GetItemAsync<string>("KullaniciId");
+        var urunlerFromDb = await UrunService.GetAllProductsAsync();
+
+        // Domain.Urun'den Presentation.Urun'e dönüşüm
+        var urunlerPresentation = urunlerFromDb.Select(u => new Urun
+            {
+                Id = u.Id,
+                UrunAdi = u.UrunAdi,
+                Fiyat = u.Fiyat
+            }).ToList();
+
+        return urunlerPresentation;
+    }
+
+    private async Task HandleSiparisOlustur()
+    {
+        if (selectedUrunId > 0 && miktar > 0)
+        {
+            decimal fiyat = urunler.First(u => u.Id == selectedUrunId).Fiyat;
+            await SiparisRepo.CreateSiparisAsync(kullaniciId, selectedUrunId, miktar, fiyat);
+            Navigation.NavigateTo("/dashboard");
+        }
+    }
+
+    public class Urun
+    {
+        public int Id { get; set; }
+        public string UrunAdi { get; set; }
+        public decimal Fiyat { get; set; }
+    }
+}

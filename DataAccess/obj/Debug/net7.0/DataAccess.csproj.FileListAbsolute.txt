@@ -1,0 +1,15 @@
+C:\Users\TkN\Source\repos\ECommerceOrderManagement\DataAccess\bin\Debug\net7.0\DataAccess.deps.json
+C:\Users\TkN\Source\repos\ECommerceOrderManagement\DataAccess\bin\Debug\net7.0\DataAccess.dll
+C:\Users\TkN\Source\repos\ECommerceOrderManagement\DataAccess\bin\Debug\net7.0\DataAccess.pdb
+C:\Users\TkN\Source\repos\ECommerceOrderManagement\DataAccess\bin\Debug\net7.0\Domain.dll
+C:\Users\TkN\Source\repos\ECommerceOrderManagement\DataAccess\bin\Debug\net7.0\Domain.pdb
+C:\Users\TkN\Source\repos\ECommerceOrderManagement\DataAccess\obj\Debug\net7.0\DataAccess.csproj.AssemblyReference.cache
+C:\Users\TkN\Source\repos\ECommerceOrderManagement\DataAccess\obj\Debug\net7.0\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\TkN\Source\repos\ECommerceOrderManagement\DataAccess\obj\Debug\net7.0\DataAccess.AssemblyInfoInputs.cache
+C:\Users\TkN\Source\repos\ECommerceOrderManagement\DataAccess\obj\Debug\net7.0\DataAccess.AssemblyInfo.cs
+C:\Users\TkN\Source\repos\ECommerceOrderManagement\DataAccess\obj\Debug\net7.0\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\TkN\Source\repos\ECommerceOrderManagement\DataAccess\obj\Debug\net7.0\DataAccess.csproj.Up2Date
+C:\Users\TkN\Source\repos\ECommerceOrderManagement\DataAccess\obj\Debug\net7.0\DataAccess.dll
+C:\Users\TkN\Source\repos\ECommerceOrderManagement\DataAccess\obj\Debug\net7.0\refint\DataAccess.dll
+C:\Users\TkN\Source\repos\ECommerceOrderManagement\DataAccess\obj\Debug\net7.0\DataAccess.pdb
+C:\Users\TkN\Source\repos\ECommerceOrderManagement\DataAccess\obj\Debug\net7.0\ref\DataAccess.dll

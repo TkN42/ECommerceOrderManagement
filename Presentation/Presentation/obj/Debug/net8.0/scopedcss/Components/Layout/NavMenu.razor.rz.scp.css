@@ -1,0 +1,81 @@
+#sidebar[b-xg50uw8dwo] {
+    min-width: 15rem;
+    max-width: 15rem;
+    transition: transform 0.1s ease-out;
+    height: 100%;
+    max-height: 100%;
+    display: block;
+    background: inherit;
+}
+
+.logo[b-xg50uw8dwo] {
+    text-align: center;
+}
+
+[b-xg50uw8dwo] .menu.display-mobile {
+    margin-bottom: 2rem;
+}
+
+[b-xg50uw8dwo] .menu.display-iam {
+    margin-bottom: 2rem;
+}
+
+[b-xg50uw8dwo] .menu {
+    background-color: inherit;
+}
+
+    [b-xg50uw8dwo] .menu .dxbl-menu-item-list {
+        gap: 0.5rem;
+    }
+
+[b-xg50uw8dwo] .menu-item {
+    color: var(--bs-white);
+}
+
+[b-xg50uw8dwo] .icon {
+    width: 1rem;
+    height: 1rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-left: 0.5rem;
+}
+
+[b-xg50uw8dwo] .home-icon {
+    background-image: url("images/home.svg");
+}
+
+[b-xg50uw8dwo] .weather-icon {
+    background-image: url("images/weather.svg");
+}
+
+[b-xg50uw8dwo] .counter-icon {
+    background-image: url("images/counter.svg");
+}
+
+[b-xg50uw8dwo] .settings-icon {
+    background-image: url("images/account/settings.svg");
+}
+
+[b-xg50uw8dwo] .log-in-icon {
+    background-image: url("images/account/log-in.svg");
+}
+
+[b-xg50uw8dwo] .log-out-icon {
+    background-image: url("images/account/log-out.svg");
+}
+
+[b-xg50uw8dwo] .user-icon {
+    background-image: url("images/account/user.svg");
+}
+
+@media (max-width: 768px) {
+    #sidebar[b-xg50uw8dwo] {
+        min-width: inherit;
+        max-width: inherit;
+        display: block;
+    }
+
+    .logo[b-xg50uw8dwo] {
+        text-align: inherit;
+    }
+}

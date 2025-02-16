@@ -1,0 +1,134 @@
+﻿@page "/parola-degistir"
+@using System.ComponentModel.DataAnnotations
+@using BusinessLogic.Services
+@rendermode InteractiveAuto
+@inject NavigationManager Navigation
+@inject BusinessLogic.Services.AuthService AuthService
+@inject IJSRuntime JSRuntime
+
+<h3 style="text-align: center;">Parola Değiştir</h3>
+
+<div class="change-password-form-container">
+    <EditForm Model="@changePasswordModel" OnValidSubmit="HandlePasswordChange" OnInvalidSubmit="HandleInvalidSubmit" FormName="changePasswordForm">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <DxTextBox @bind-Text="@changePasswordModel.EskiParola" NullText="Eski Parola" Password="true" CssClass="form-input" />
+        <DxTextBox @bind-Text="@changePasswordModel.YeniParola" NullText="Yeni Parola" Password="true" CssClass="form-input" />
+        <DxTextBox @bind-Text="@changePasswordModel.YeniParolaTekrar" NullText="Yeni Parola Tekrar" Password="true" CssClass="form-input" />
+
+        <DxButton SubmitFormOnClick="true"
+                  Text="Parolayı Değiştir"
+                  CssClass="form-button"
+                  RenderStyle="ButtonRenderStyle.Secondary"
+                  FormName="changePasswordForm" />
+
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+            <p style="color: red; font-weight: bold; text-align: center;">@errorMessage</p>
+        }
+
+        @if (isSuccess)
+        {
+            <p style="color: green; font-weight: bold; text-align: center;">Parola başarıyla değiştirildi.</p>
+        }
+    </EditForm>
+</div>
+
+@code {
+    [Inject]
+    private Blazored.SessionStorage.ISessionStorageService SessionStorage { get; set; }
+    private ChangePasswordModel changePasswordModel = new ChangePasswordModel();
+    private string errorMessage;
+    private bool isSuccess;
+    private string currentUserName;
+
+    private async Task HandlePasswordChange()
+    {
+        // Parolaların eşleşip eşleşmediğini kontrol et
+        if (changePasswordModel.YeniParola != changePasswordModel.YeniParolaTekrar)
+        {
+            errorMessage = "Yeni parolalar uyuşmuyor.";
+            return;
+        }
+
+        // Eski parolanın doğruluğunu kontrol et
+        currentUserName = await SessionStorage.GetItemAsync<string>("KullaniciAdi");
+        bool isPasswordChanged = await AuthService.ChangePasswordAsync(currentUserName, changePasswordModel.EskiParola, changePasswordModel.YeniParola); 
+
+        if (isPasswordChanged)
+        {
+            isSuccess = true;
+            //await JSRuntime.InvokeVoidAsync("showAlert", "Parola başarıyla değiştirildi.");
+            Navigation.NavigateTo("/dashboard");
+        }
+        else
+        {
+            errorMessage = "Eski parola hatalı.";
+        }
+    }
+
+    private void HandleInvalidSubmit()
+    {
+        errorMessage = "Formda geçersiz veriler var.";
+    }
+
+    public class ChangePasswordModel
+    {
+        [Required(ErrorMessage = "Eski parola gereklidir.")]
+        public string EskiParola { get; set; }
+
+        [Required(ErrorMessage = "Yeni parola gereklidir.")]
+        [StringLength(100, MinimumLength = 6, ErrorMessage = "Yeni parola en az 6 karakter olmalı.")]
+        public string YeniParola { get; set; }
+
+        [Required(ErrorMessage = "Yeni parola tekrar gereklidir.")]
+        [Compare("YeniParola", ErrorMessage = "Yeni parolalar eşleşmiyor.")]
+        public string YeniParolaTekrar { get; set; }
+    }
+}
+
+<style>
+    .change-password-form-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-input {
+        width: 100%;
+        margin-bottom: 15px;
+        padding: 8px;
+        font-size: 14px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    .form-button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+        .form-button:hover {
+            background-color: #0056b3;
+        }
+
+    h3 {
+        margin-bottom: 20px;
+    }
+
+    .change-password-form-container p {
+        text-align: center;
+    }
+</style>
