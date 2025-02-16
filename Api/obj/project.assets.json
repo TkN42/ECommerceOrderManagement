@@ -2479,6 +2479,7 @@
           "BusinessLogic": "1.0.0",
           "DataAccess": "1.0.0",
           "DevExpress.Blazor": "24.2.3",
+          "Domain": "1.0.0",
           "Microsoft.AspNetCore.Components.Authorization": "8.0.12",
           "Microsoft.AspNetCore.Components.WebAssembly.Server": "8.0.0-0",
           "Microsoft.AspNetCore.Identity": "2.3.0",
@@ -6336,13 +6337,13 @@
     },
     "Presentation/1.0.0": {
       "type": "project",
-      "path": "../testtest/testtest/Presentation.csproj",
-      "msbuildProject": "../testtest/testtest/Presentation.csproj"
+      "path": "../Presentation/Presentation/Presentation.csproj",
+      "msbuildProject": "../Presentation/Presentation/Presentation.csproj"
     },
     "Presentation.Client/1.0.0": {
       "type": "project",
-      "path": "../testtest/testtest.Client/Presentation.Client.csproj",
-      "msbuildProject": "../testtest/testtest.Client/Presentation.Client.csproj"
+      "path": "../Presentation/Presentation.Client/Presentation.Client.csproj",
+      "msbuildProject": "../Presentation/Presentation.Client/Presentation.Client.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6402,11 +6403,11 @@
             "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Domain\\Domain.csproj": {
               "projectPath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Domain\\Domain.csproj"
             },
-            "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest.Client\\Presentation.Client.csproj": {
-              "projectPath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest.Client\\Presentation.Client.csproj"
+            "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation.Client\\Presentation.Client.csproj": {
+              "projectPath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation.Client\\Presentation.Client.csproj"
             },
-            "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest\\Presentation.csproj": {
-              "projectPath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest\\Presentation.csproj"
+            "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation\\Presentation.csproj": {
+              "projectPath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation\\Presentation.csproj"
             }
           }
         }

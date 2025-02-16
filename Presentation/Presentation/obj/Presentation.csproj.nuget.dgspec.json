@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest\\Presentation.csproj": {}
+    "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation\\Presentation.csproj": {}
   },
   "projects": {
     "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\BusinessLogic\\BusinessLogic.csproj": {
@@ -280,14 +280,14 @@
         }
       }
     },
-    "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest.Client\\Presentation.Client.csproj": {
+    "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation.Client\\Presentation.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest.Client\\Presentation.Client.csproj",
+        "projectUniqueName": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation.Client\\Presentation.Client.csproj",
         "projectName": "Presentation.Client",
-        "projectPath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest.Client\\Presentation.Client.csproj",
+        "projectPath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation.Client\\Presentation.Client.csproj",
         "packagesPath": "C:\\Users\\TkN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest.Client\\obj\\",
+        "outputPath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation.Client\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\DevExpress 24.2\\Components\\Offline Packages",
@@ -413,14 +413,14 @@
         }
       }
     },
-    "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest\\Presentation.csproj": {
+    "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation\\Presentation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest\\Presentation.csproj",
+        "projectUniqueName": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation\\Presentation.csproj",
         "projectName": "Presentation",
-        "projectPath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest\\Presentation.csproj",
+        "projectPath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation\\Presentation.csproj",
         "packagesPath": "C:\\Users\\TkN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest\\obj\\",
+        "outputPath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\DevExpress 24.2\\Components\\Offline Packages",
@@ -452,8 +452,11 @@
               "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\DataAccess\\DataAccess.csproj": {
                 "projectPath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\DataAccess\\DataAccess.csproj"
               },
-              "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest.Client\\Presentation.Client.csproj": {
-                "projectPath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest.Client\\Presentation.Client.csproj"
+              "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Domain\\Domain.csproj"
+              },
+              "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation.Client\\Presentation.Client.csproj": {
+                "projectPath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation.Client\\Presentation.Client.csproj"
               }
             }
           }

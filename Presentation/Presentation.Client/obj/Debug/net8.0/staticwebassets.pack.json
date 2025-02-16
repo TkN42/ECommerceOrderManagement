@@ -1,19 +1,19 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "Id": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
     },
     {
-      "Id": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest.Client\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Presentation.Client.bundle.scp.css",
+      "Id": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation.Client\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Presentation.Client.bundle.scp.css",
       "PackagePath": "staticwebassets\\Presentation.Client.nlfzrpspce.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest.Client\\wwwroot\\appsettings.Development.json",
+      "Id": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation.Client\\wwwroot\\appsettings.Development.json",
       "PackagePath": "staticwebassets\\appsettings.Development.json"
     },
     {
-      "Id": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest.Client\\wwwroot\\appsettings.json",
+      "Id": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation.Client\\wwwroot\\appsettings.json",
       "PackagePath": "staticwebassets\\appsettings.json"
     },
     {

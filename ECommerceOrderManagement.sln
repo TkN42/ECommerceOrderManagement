@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\Da
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{4A080A40-FB0A-459F-BB90-592C124B690A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation\Presentation.csproj", "{F63CBFAC-32D9-46B0-AE95-8580AA357776}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Client", "Presentation\Presentation.Client\Presentation.Client.csproj", "{D5E7F9C5-993E-425B-8248-8B626044110D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{4A080A40-FB0A-459F-BB90-592C124B690A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A080A40-FB0A-459F-BB90-592C124B690A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A080A40-FB0A-459F-BB90-592C124B690A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F63CBFAC-32D9-46B0-AE95-8580AA357776}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F63CBFAC-32D9-46B0-AE95-8580AA357776}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F63CBFAC-32D9-46B0-AE95-8580AA357776}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F63CBFAC-32D9-46B0-AE95-8580AA357776}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5E7F9C5-993E-425B-8248-8B626044110D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5E7F9C5-993E-425B-8248-8B626044110D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5E7F9C5-993E-425B-8248-8B626044110D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5E7F9C5-993E-425B-8248-8B626044110D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

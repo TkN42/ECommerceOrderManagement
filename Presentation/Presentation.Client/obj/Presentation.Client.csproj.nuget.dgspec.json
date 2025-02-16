@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest.Client\\Presentation.Client.csproj": {}
+    "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation.Client\\Presentation.Client.csproj": {}
   },
   "projects": {
     "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\BusinessLogic\\BusinessLogic.csproj": {
@@ -280,14 +280,14 @@
         }
       }
     },
-    "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest.Client\\Presentation.Client.csproj": {
+    "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation.Client\\Presentation.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest.Client\\Presentation.Client.csproj",
+        "projectUniqueName": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation.Client\\Presentation.Client.csproj",
         "projectName": "Presentation.Client",
-        "projectPath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest.Client\\Presentation.Client.csproj",
+        "projectPath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation.Client\\Presentation.Client.csproj",
         "packagesPath": "C:\\Users\\TkN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest.Client\\obj\\",
+        "outputPath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation.Client\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\DevExpress 24.2\\Components\\Offline Packages",

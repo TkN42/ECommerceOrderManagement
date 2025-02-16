@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Presentation.Client",
   "resources": {
-    "hash": "sha256-hhpmJmDQsnJYvd3huqStRKM5GJTuLlLybMLb/G5HR4s=",
+    "hash": "sha256-XJpCEZBQkeMMbfxGFG0eCvOyNNZCsKJx40ZdYluXdVo=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-B6DNRvFeCUi3jbx9uKpuj+hV9cN0KG4RdZj1FgBZwj8="
     },
@@ -288,13 +288,13 @@
       "BusinessLogic.wasm": "sha256-gSSznpP2kfYUgj8Q8kxTERuO8YA85/mmcz4krs78Fxk=",
       "DataAccess.wasm": "sha256-VHyJ3hNyBh0PWhITR3udO6JhrXB2EH08PSFuZv009fE=",
       "Domain.wasm": "sha256-U3WW915N3KtEosdtFjt6Zi+Ml/dNnUrrJ32mWMAiQNQ=",
-      "Presentation.Client.wasm": "sha256-36rUIFQdvSfoHolTibsdhPDtrMdVPG/tpZArKh1hoU0="
+      "Presentation.Client.wasm": "sha256-LnCHBxzSh1pBE50eGn13RajQ5F7BX/tlc2k4Oa2ZjfI="
     },
     "pdb": {
       "BusinessLogic.pdb": "sha256-yCgoQNPOT0h5v5XfklmEUWh8KnSq6DYZEcK7Wy0s3YU=",
       "DataAccess.pdb": "sha256-/+nAFLIiDAk7EN8Vbj8PyDa228pc9yQ/SQ+LlotxrZk=",
       "Domain.pdb": "sha256-3l4snwrFVjmgwVVFcYwwDHR+MXeM64S57qfxaoPBR1s=",
-      "Presentation.Client.pdb": "sha256-YYkuZXTLA+qPqBTa/ULBFRFnSeNOjhWzpBweCr/AkGk="
+      "Presentation.Client.pdb": "sha256-+KVjUk220ieshDgJTPJX9iHLVnlIU0uD8h7sio4T6x4="
     },
     "satelliteResources": {
       "cs": {

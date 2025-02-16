@@ -260,3 +260,7 @@ C:\Users\TkN\Source\repos\ECommerceOrderManagement\testtest\testtest.Client\obj\
 C:\Users\TkN\Source\repos\ECommerceOrderManagement\testtest\testtest.Client\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\TkN\Source\repos\ECommerceOrderManagement\testtest\testtest.Client\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\TkN\Source\repos\ECommerceOrderManagement\testtest\testtest.Client\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\TkN\Source\repos\ECommerceOrderManagement\Presentation\Presentation.Client\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\TkN\Source\repos\ECommerceOrderManagement\Presentation\Presentation.Client\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\TkN\Source\repos\ECommerceOrderManagement\Presentation\Presentation.Client\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\TkN\Source\repos\ECommerceOrderManagement\Presentation\Presentation.Client\obj\Debug\net8.0\staticwebassets.build.json

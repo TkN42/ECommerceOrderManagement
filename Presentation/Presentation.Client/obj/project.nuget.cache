@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "duJQBF1SYX4=",
+  "dgSpecHash": "fvi1EzqOJpc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\testtest\\testtest.Client\\Presentation.Client.csproj",
+  "projectFilePath": "C:\\Users\\TkN\\Source\\repos\\ECommerceOrderManagement\\Presentation\\Presentation.Client\\Presentation.Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\TkN\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\TkN\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

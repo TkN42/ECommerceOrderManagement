@@ -12,6 +12,7 @@
           "BusinessLogic": "1.0.0",
           "DataAccess": "1.0.0",
           "DevExpress.Blazor": "24.2.3",
+          "Domain": "1.0.0",
           "Microsoft.AspNetCore.Components.Authorization": "8.0.12",
           "Microsoft.AspNetCore.Components.WebAssembly.Server": "8.0.13",
           "Microsoft.AspNetCore.Identity": "2.3.0",
